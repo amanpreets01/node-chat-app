@@ -19,7 +19,7 @@ io.on('connection' , (socket) => {
     console.log(data);
     io.emit('newMessage' , {
       from : data.from,
-      text : data.to,
+      text : data.text,
       createdAt : new Date().getTime()
     });
   });
