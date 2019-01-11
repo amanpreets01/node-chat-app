@@ -16,13 +16,12 @@ io.on('connection' , (socket) => {
   console.log('Connected to new user');
 
   socket.on('createMessage' , function(data) {
-    console.log(data)
-  });
-
-  socket.emit('newMessage' , data =  {
-    from : "aman@example.com",
-    text : "Hey ,what's up ??",
-    createdAt : new Date().getFullYear()
+    console.log(data);
+    io.emit('newMessage' , {
+      from : data.from,
+      text : data.to,
+      createdAt : new Date().getTime()
+    });
   });
 
   socket.on('disconnect' , () => {
