@@ -11,3 +11,7 @@ socket.on('disconnect' , function() {
 socket.on('newMessage' , function(data) {
   console.log(data);
 });
+
+socket.on('createMessage' , function(data) {
+  console.log(data);
+});
