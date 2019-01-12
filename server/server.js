@@ -9,23 +9,16 @@ const http = require('http');
 var app = express()
 var server = http.createServer(app);
 var io = socketIO(server);
+var {generateMessage} = require('./utils/message');
 
 app.use(express.static(publicPath));
 
 io.on('connection' , (socket) => {
   console.log('Connected to new user');
 
-  socket.emit('createMessage' , {
-    name : "Admin",
-    text : "Welcome to chat app",
-    createdAt : new Date().getTime()
-  });
+  socket.emit('createMessage' , generateMessage('Admin' , 'Welcome to the chat app'));
 
-  socket.broadcast.emit('createMessage' , {
-    name : "Admin",
-    text : "New User Added",
-    createdAt : new Date().getTime()
-  })
+  socket.broadcast.emit('createMessage' , generateMessage('Admin' , 'New User added'));
 
   socket.on('createMessage' , function(data) {
     console.log(data);
