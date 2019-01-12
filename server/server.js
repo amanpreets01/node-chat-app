@@ -20,22 +20,16 @@ io.on('connection' , (socket) => {
 
   socket.broadcast.emit('createMessage' , generateMessage('Admin' , 'New User added'));
 
-  socket.on('createMessage' , function(data) {
-    console.log(data);
-    io.emit('newMessage' , {
-      from : data.from,
-      text : data.text,
-      createdAt : new Date().getTime()
-    });
+  socket.on('createMessage', (message,callback) => {
+    console.log(`createMessage : ${message}`);
+    io.emit('newMessage' , generateMessage(message.from , message.text));
+    callback('This is from server');
   });
 
   socket.on('disconnect' , () => {
     console.log('Disconnected from the user');
   });
 });
-
-
-
 
 server.listen(port , () => {
   console.log('#############');

@@ -8,10 +8,21 @@ socket.on('disconnect' , function() {
   console.log('Disconnected to the server');
 });
 
-socket.on('newMessage' , function(data) {
-  console.log(data);
+socket.on('newMessage' , function(message) {
+  var li = jQuery('<li></li>');
+  li.text(`${message.from}: ${message.text}`)
+
+  jQuery("#messages").append(li);
 });
 
-socket.on('createMessage' , function(data) {
-  console.log(data);
+jQuery('#message-form').on('submit' , function(e){
+  e.preventDefault();
+
+  socket.emit('createMessage' ,message = {
+    from : "User1",
+    text : jQuery('[name=message]').val()
+  } ,function(data){
+    console.log(data);
+  });
+
 });
