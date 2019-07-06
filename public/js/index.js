@@ -23,7 +23,6 @@ socket.on('createMessage' ,(message) => {
 });
 
 jQuery('#message-form').on('submit' , function(e){
-  e.preventDefault();
 
   socket.emit('createMessage' ,message = {
     from : new URL(window.location.href).searchParams.get('uname'),
@@ -31,6 +30,8 @@ jQuery('#message-form').on('submit' , function(e){
   } ,function(){
 
   });
+  $('#textfield1').val('');
+  e.preventDefault();
 });
 
 var locationButton = jQuery('#send-location');

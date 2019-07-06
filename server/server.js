@@ -19,8 +19,7 @@ app.use(express.static(publicPath));
 
   socket.broadcast.emit('createMessage' , generateMessage('Admin' , 'New User added'));
 
-  socket.once('createMessage', (message,callback) => {
-    console.log(`createMessage : ${message}`);
+  socket.on('createMessage', (message,callback) => {
     io.emit('newMessage' , generateMessage(message.from , message.text));
     callback('This is from server');
   });
