@@ -1,23 +1,20 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Chat App</title>
-    <style media="screen">
-    </style>
-  </head>
-  <body>
-    <p>Welcome to the chat app</p>
+<html>
+<head>
+	<title>
+		Chat App
+	</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+</head>
+<body>
+	<form action="/chat.html" >
 
-    <ol style = "list-style-type : none" id = "messages"></ol>
-
-    <form id="message-form">
-      <input type="text" name="message"/>
-      <button type="submit" name="button">Send</button>
-    </form>
-
-    <script src = "/socket.io/socket.io.js"></script>
-    <script src = "/js/Libs/jquery.js"></script>
-    <script src = "/js/index.js"> </script>
-  </body>
+  <div class="container">
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" required>
+    <div>
+    	<button type="submit">Login</button>
+    </div>
+  </div>
+	</form>
+</body>
 </html>
