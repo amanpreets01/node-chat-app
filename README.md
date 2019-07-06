@@ -5,7 +5,7 @@ Normally people pinging to this server will be uniquely identified and can chat 
 
 ## Steps to run
 ``` 
- npm install\
+ npm install
  node server/server.js
 ```
 
